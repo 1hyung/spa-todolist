@@ -1,8 +1,9 @@
-package com.teamsparta.spatodolist.domain.todo.dtos
+package com.teamsparta.spatodolist.domain.todo.todocard.dtos
 
-import com.teamsparta.spatodolist.domain.todo.model.TodoCards
+import com.teamsparta.spatodolist.domain.todo.todocard.model.TodoCards
 
 data class TodoCardDto(
+    //id isCompleted createdAt
     val title: String,
     val content: String,
     val authorName: String,
@@ -12,7 +13,7 @@ data class TodoCardDto(
             return TodoCardDto(
                 todoCards.title,
                 todoCards.content,
-                todoCards.authorName,
+                todoCards.authorName
             )
         }
     }

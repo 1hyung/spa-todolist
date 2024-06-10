@@ -1,4 +1,4 @@
-package com.teamsparta.spatodolist.domain.todo.dtos
+package com.teamsparta.spatodolist.domain.todo.todocard.dtos
 
 data class UpdateTodoCardArguments(
     //할 일 제목, 할일 내용, 작성일, 작성자 이름
