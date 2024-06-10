@@ -10,13 +10,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -31,16 +25,16 @@ dependencies {
     // Spring Web - 웹 애플리케이션을 개발하기 위한 스프링 웹 스타터
     implementation("org.springframework.boot:spring-boot-starter-web")
 
-    // Jackson Kotlin module - JSON 직렬화/역직렬화를 위한 Jackson 모듈
+    // Jackson Kotlin 모듈 - JSON 직렬화/역직렬화를 위한 Jackson 모듈
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // Kotlin Reflect - Kotlin 리플렉션을 사용하기 위한 라이브러리
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    // Kotlin Standard Library - Kotlin 표준 라이브러리
+    // Kotlin 표준 라이브러리
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    // PostgreSQL Driver - PostgreSQL 데이터베이스에 연결하기 위한 드라이버
+    // PostgreSQL 드라이버 - PostgreSQL 데이터베이스에 연결하기 위한 드라이버
     implementation("org.postgresql:postgresql:42.7.3")
 
     // SpringDoc OpenAPI - Spring MVC와 통합된 OpenAPI 문서화 도구
@@ -55,15 +49,23 @@ dependencies {
     // Spring Boot Test Starter - 테스트를 위한 스프링 부트 스타터
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    // JUnit Platform Launcher - JUnit 플랫폼 런처 (테스트 실행용)
+    // JUnit 플랫폼 런처 - JUnit 테스트 실행용
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
 
+    // Spring Boot Starter Validation - 입력값 검증을 위한 스프링 부트 스타터
+    implementation("org.springframework.boot:spring-boot-starter-validation:3.2.1")
 
-kotlin {
-    compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict")
-    }
+    // JJWT API - JWT 생성 및 검증을 위한 라이브러리
+    implementation("io.jsonwebtoken:jjwt-api:0.12.3")
+
+    // JJWT Impl - JWT 구현체
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
+
+    // JJWT Jackson - JWT를 JSON으로 직렬화/역직렬화하기 위한 Jackson 모듈
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
+
+    // Spring Boot Starter Security - 애플리케이션 보안을 위한 스프링 부트 스타터
+    implementation("org.springframework.boot:spring-boot-starter-security")
 }
 
 tasks.withType<Test> {
